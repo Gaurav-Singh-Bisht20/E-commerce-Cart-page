@@ -1,11 +1,13 @@
 import { BrowserRouter as Router } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
+import {CartContextProvider} from "./context/cartContext"
 
 
 
 function App() {
   return (
+    <CartContextProvider>
     <div>
     <Router>
     <div className="w-full">
@@ -15,6 +17,7 @@ function App() {
     </Router>
     <Hero></Hero>
     </div>
+    </CartContextProvider>
   )
 }
 

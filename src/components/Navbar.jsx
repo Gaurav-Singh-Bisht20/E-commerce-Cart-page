@@ -1,10 +1,13 @@
 import { useState } from "react"
 import { NavLink } from "react-router-dom"
 import { BiX } from "react-icons/bi";
+import { useCart } from "../context/cartContext";
+import { FaTrash } from "react-icons/fa";
 
 
 const Navbar = () => {
   const [isCartOpen, setIsCartOpen] = useState(false)
+  const {cart} = useCart()
 
   const toggleCart = () => {
     setIsCartOpen((prevState) => !prevState); 
@@ -95,9 +98,31 @@ const Navbar = () => {
               <hr className="h-[2px] bg-gray-300" />
               <div>
                 <div>
-                  
+                {cart.length === 0 ? (
+                  <p>Your cart is empty.</p>
+                ) : (
+                  <div className="flex flex-col mt -4 gap-4">
+                  <ul className="flex flex-col gap-4 ">
+                    {cart.map((item) => (
+                      <li className="flex justify-between mt-4" key={item.id}>
+                        <div className="w-20">
+                          <img src={item.img} alt="" className="rounded-md"/>
+                        </div>
+                        <div className="flex flex-col">
+                         <p>{item.name}</p> 
+                         <p>{item.quantity} x ${item.price} <span>${item.quantity*item.price}</span></p>
+                        </div>
+                        <button  className=" text-2xl">
+                          <FaTrash />
+                        </button>
+                      </li>
+                    ))}
+                  </ul> 
+                  <button className=" text-xl md:text-xl text-center bg-orange-600 rounded-xl  w-full py-1 md:py-2 mt-6">Checkout</button>
+                  </div>
+                )}
                 </div>
-                <button className=" text-xl md:text-xl text-center bg-orange-600 rounded-xl  w-full py-1 md:py-2">Checkout</button>
+                
                 </div>
             </div>
           )}

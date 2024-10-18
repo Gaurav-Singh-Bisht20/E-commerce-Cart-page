@@ -2,10 +2,27 @@ import { useState } from 'react'
 import Carousel from './Carousel'
 import Carousel2 from './Carousel2';
 import { useMediaQuery } from 'usehooks-ts';
+import { useCart } from '../context/cartContext';
+import productImg from '../../images/image-product-1-thumbnail.jpg'
 
 const Hero = () => {
   const isLargeScreen = useMediaQuery('(min-width: 768px)');
   const [count, setCount] = useState(0);
+  const { addToCart } = useCart();
+
+  const product = {
+    id: 1,
+    name: 'Fall Limited Edition Sneakers',
+    price: 125.0,
+    img : productImg
+  };
+
+  function handleAddToCart(){
+    if(count>0){
+      addToCart(product,count)
+      setCount(0)
+    }
+  }
 
   function addCount (){
     setCount(prev => prev+1)
@@ -36,7 +53,7 @@ const Hero = () => {
               <p className='text-xl'>{count}</p>
               <button onClick={addCount} className='text-orange-500 text-2xl font-bold'>+</button>
             </div>
-            <div className ='flex gap-4 cursor-pointer bg-orange-500 py-2 justify-center items-center rounded-lg md:w-1/2'>
+            <div onClick={handleAddToCart} className ='flex gap-4 cursor-pointer bg-orange-500 py-2 justify-center items-center rounded-lg md:w-1/2'>
                 <img src={'../../images/icon-cart.svg'} alt="" />
                 <p>Add to cart</p>
              </div> 
