@@ -34,7 +34,7 @@ const Hero = () => {
     }
   }
   return (
-    <div className='w-full md:w-[90vw] md:mt-12 mx-auto flex flex-col gap-8  md:gap-12 md:flex-row '>
+    <div className='w-full md:w-[90vw] md:mt-12 mb-10 mx-auto flex flex-col gap-8  md:gap-12 md:flex-row '>
          {isLargeScreen ? <Carousel2 /> : <Carousel />}
         <div className=' flex flex-col gap-4 lg:gap-8 w-[90vw] mx-auto md:w-full'>
             <p className='text-lg text-gray-400 '>SNEAKER COMPANY</p>
@@ -43,7 +43,7 @@ const Hero = () => {
             <div className='flex  md:flex-col justify-between'>
                 <div className='flex gap-4'>
                 <p className='text-3xl font-bold'>$ 125.00</p>
-                <button className='bg-black py-1 px-2 text-white'>50%</button>
+                <button className='bg-black  px-2 text-white rounded-md'>50%</button>
                 </div>
                 <p className='line-through text-lg text-gray-400'>$250.00</p>
             </div>

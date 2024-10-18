@@ -7,7 +7,7 @@ import { FaTrash } from "react-icons/fa";
 
 const Navbar = () => {
   const [isCartOpen, setIsCartOpen] = useState(false)
-  const {cart} = useCart()
+  const {cart,removeItem} = useCart()
 
   const toggleCart = () => {
     setIsCartOpen((prevState) => !prevState); 
@@ -17,6 +17,11 @@ const Navbar = () => {
   const closeCart = () => {
     setIsCartOpen(false); // Close the cart
   };
+
+  const handleDelete = (id)=>{
+    removeItem(id)
+    console.log('delete icon clicked')
+  }
 
   return (
     <div className="w-[90%] mx-auto flex justify-between items-center ">
@@ -83,7 +88,10 @@ const Navbar = () => {
         </ul>
         <div className="flex items-center justify-between gap-4 md:gap-8">
         <div className="cursor-pointer relative group ">
+          <div className="relative">
+          <p className="rounded-full bg-orange-500 text-xl text-white absolute -top-6 z-50 w-6 text-center">{cart[0].quantity}</p>
           <img src={'../../images/icon-cart.svg'} onClick={toggleCart}  alt="" />
+          </div>
           {isCartOpen && (
             <div className="w-[90vw] md:w-[400px] rounded-lg overflow-x-hidden min-h-64 shadow-2xl bg-white 
              absolute z-10 top-12 md:top-14 p-4 -right-12">
@@ -99,7 +107,9 @@ const Navbar = () => {
               <div>
                 <div>
                 {cart.length === 0 ? (
-                  <p>Your cart is empty.</p>
+                 <div className="flex justify-center items-center h-full mt-8">
+                   <p >Your cart is empty.</p>
+                 </div>
                 ) : (
                   <div className="flex flex-col mt -4 gap-4">
                   <ul className="flex flex-col gap-4 ">
@@ -112,7 +122,7 @@ const Navbar = () => {
                          <p>{item.name}</p> 
                          <p>{item.quantity} x ${item.price} <span>${item.quantity*item.price}</span></p>
                         </div>
-                        <button  className=" text-2xl">
+                        <button  className=" text-2xl" onClick={() => handleDelete(item.id)}>
                           <FaTrash />
                         </button>
                       </li>
