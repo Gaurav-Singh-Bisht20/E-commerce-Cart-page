@@ -4,6 +4,10 @@ import { NavLink } from "react-router-dom";
 import { useCart } from "../context/cartContext";
 import MenuSidebar from "./MenuSlider";
 import Cart from "./Cart";
+import logoImg from '../../images/logo.svg'
+import menuImg from '../../images/icon-menu.svg'
+import cartImg from '../../images/icon-cart.svg'
+import avatarImg from '../../images/image-avatar.png'
 
 const Navbar = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -24,8 +28,8 @@ const Navbar = () => {
       {/* Navbar */}
       <div className="w-[90%] mx-auto flex justify-between items-center py-2 md:py-0">
         <div className="flex gap-4">
-          <img src={"../../images/icon-menu.svg"} className="md:hidden" alt="" onClick={handleMenu} />
-          <img src={"../../images/logo.svg"} alt="" />
+          <img src={menuImg} className="md:hidden" alt="" onClick={handleMenu} />
+          <img src={logoImg} alt="" />
         </div>
 
         <ul className="justify-between gap-4 items-center hidden md:flex">
@@ -55,7 +59,7 @@ const Navbar = () => {
               <p className="rounded-full bg-orange-500 text-xl text-white absolute -top-2 z-50 w-6 text-center">
                 {cart[0]?.quantity || 0}
               </p>
-              <img src={"../../images/icon-cart.svg"} onClick={toggleCart} alt="" />
+              <img src={cartImg} onClick={toggleCart} alt="" />
             </div>
 
             <Cart
@@ -65,7 +69,7 @@ const Navbar = () => {
               isCartOpen={isCartOpen}
             />
           </div>
-          <img src={"../../images/image-avatar.png"} className="w-8" alt="" />
+          <img src={avatarImg} className="w-8" alt="" />
         </div>
       </div>
     </div>

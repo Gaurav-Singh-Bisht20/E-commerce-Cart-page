@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
+import img1 from '../../images/image-product-1.jpg';
+import img2 from '../../images/image-product-2.jpg';
+import img3 from '../../images/image-product-3.jpg';
+import img4 from '../../images/image-product-4.jpg';
+
+
 
 const Carousel = () => {
-  const slides = [
-    '../../images/image-product-1.jpg',
-    '../../images/image-product-2.jpg',
-    '../../images/image-product-3.jpg',
-    '../../images/image-product-4.jpg',
-  ];
+  const slides = [img1, img2, img3, img4];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 

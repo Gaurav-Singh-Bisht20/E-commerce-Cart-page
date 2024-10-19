@@ -4,6 +4,7 @@ import Carousel2 from './Carousel2';
 import { useMediaQuery } from 'usehooks-ts';
 import { useCart } from '../context/cartContext';
 import productImg from '../../images/image-product-1-thumbnail.jpg'
+import cartImg from '../../images/icon-cart.svg'
 
 const Hero = () => {
   const isLargeScreen = useMediaQuery('(min-width: 768px)');
@@ -54,7 +55,7 @@ const Hero = () => {
               <button onClick={addCount} className='text-orange-500 text-2xl font-bold'>+</button>
             </div>
             <div onClick={handleAddToCart} className ='flex gap-4 cursor-pointer bg-orange-500 py-2 justify-center items-center rounded-lg md:w-1/2'>
-                <img src={'../../images/icon-cart.svg'} alt="" />
+                <img src={cartImg} alt="" />
                 <p>Add to cart</p>
              </div> 
             </div>  
